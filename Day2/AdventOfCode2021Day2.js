@@ -20,3 +20,30 @@ for (let i = 0; i < dataArray.length; i++) {
 console.log(horizontalPosition);
 console.log(depth);
 console.log(horizontalPosition * depth);
+
+let aim = 0;
+let horizontalPosition2 = 0;
+let depth2 = 0;
+for (let i = 0; i < dataArray.length; i++) {
+  if (aim === 0) {
+    if (dataArray[i][0] === "forward") {
+      horizontalPosition2 += parseInt(dataArray[i][1]);
+    } else if (dataArray[i][0] === "up") {
+      aim = aim - parseInt(dataArray[i][1]);
+    } else if (dataArray[i][0] === "down") {
+      aim = aim + parseInt(dataArray[i][1]);
+    }
+  } else if (aim !== 0) {
+    if (dataArray[i][0] === "forward") {
+      horizontalPosition2 += parseInt(dataArray[i][1]);
+      depth2 += aim * parseInt(dataArray[i][1]);
+    } else if (dataArray[i][0] === "up") {
+      aim = aim - parseInt(dataArray[i][1]);
+    } else if (dataArray[i][0] === "down") {
+      aim = aim + parseInt(dataArray[i][1]);
+    }
+  }
+}
+console.log(horizontalPosition2);
+console.log(depth2);
+console.log(horizontalPosition2 * depth2);
